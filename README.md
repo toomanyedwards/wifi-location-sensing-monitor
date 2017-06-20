@@ -25,3 +25,19 @@ As described [here](https://forum.openwrt.org/viewtopic.php?id=60360), the WD-03
 9. Start up your WD-03 normally. When the Wi-Fi indicator turns green, OpenWrt has booted successfully.
 10. OpenWrt uses 192.168.1.1 as the default router IP address, so you will need to switch your computer back to a dynamic IP address, or change your static IP address to 192.168.1.X to configure OpenWrt.
 
+## Configure as Access Point Client
+
+The following steps describe configuring the monitor a wifi access point client. This is required so that signal strength information can be forwarded to the Convective Core Wifi Location Sensing server.
+
+1. Login to OpenWrt on 192.168.1.1 (root/no password)
+2. Choose Network>Wifi>Scan
+3. Click “Join Network” for “CCNet_AP”
+* *Note: CCNet_AP is a well known access point for all Convective Core Wifi Location Sensing Monitors*
+4. Browse to Join Network>Settings
+5. Set WPA passphrase: 5124238782
+6. Set firewall zone to lan
+7. Click “Submit”
+8. Click “Save and Apply”
+9. Wireless should now be connected and show signal strength
+10. To verify setup. Telnet into 192.168.1.1 and ping a well known domain (e.g. - cnn.com)
+
