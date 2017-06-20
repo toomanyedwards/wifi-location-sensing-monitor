@@ -4,4 +4,5 @@ This is the repo for the monitor component of the Convective Core Wifi Location 
 
 ## Setup
 
-The
+This section describes the setup of monitor.  Monitors leverage the [OpenWrt](https://openwrt.org/) Linux distribution for embedded devices.
+
