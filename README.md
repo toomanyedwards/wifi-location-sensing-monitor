@@ -41,3 +41,23 @@ The following steps describe configuring the monitor a wifi access point client.
 9. Wireless should now be connected and show signal strength
 10. To verify setup. Telnet into 192.168.1.1 and ping a well known domain (e.g. - cnn.com)
 
+## Configuring the Monitor Interface
+
+The following section describes how to configure the wifi monitor interface that is used for monitoring network traffic.
+
+1. Browse to Network>Wifi>Add
+2. Select "Monitor" mode
+3. Select "lan" network
+4. Click "Save and Apply"
+
+## Installing tcpdump
+
+Convective Core Wifi Location Sensing Monitors require that *tcpdump* be installed on the monitor machine. The following describes the installation steps.
+
+1. Telnet into 192.168.1.1
+2. Run: opkg update
+3. Run: opkg install tcpdump
+4. Verify the installation by running: *tcpdump -i wlan0-1"*
+5. tcpsump should start and you should see the network traffic captured by the monitor interface
+
+
