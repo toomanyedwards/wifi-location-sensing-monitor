@@ -18,7 +18,7 @@ As described [here](https://forum.openwrt.org/viewtopic.php?id=60360), the WD-03
 3. Rename the image to kernel — be sure there is no file extension, and that there are no other files on the TFTP server.
 4. Plug the WD-03 into your computer via ethernet.
 5. Set your computer to use 10.10.10.254 as its IP address.
-* *Note: The steps for assigning a staic IP to w Windows machine are described [here](https://www.howtogeek.com/howto/19249/how-to-assign-a-static-ip-address-in-xp-vista-or-windows-7/) *
+* *Note: The steps for assigning a staic IP to w Windows machine are described [here](https://www.howtogeek.com/howto/19249/how-to-assign-a-static-ip-address-in-xp-vista-or-windows-7/)*
 6. With your WD-03 shut down, hold down the power button until the first white LED lights up.
 7. Push and hold the reset button and release the power button. Continue holding the reset button for 30 seconds or until it begins searching for files on your TFTP server, whichever comes first.
 8. The WD-03 will look for your computer at 10.10.10.254 and install the kernel file. Once it has finished installation of the kernel file, it will search for a (nonexistent) rootfs file — when it begins searching for this file, shut down the WD-03 by holding the power button normally.
