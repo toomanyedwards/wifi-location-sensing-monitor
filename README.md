@@ -14,7 +14,7 @@ As described [here](https://forum.openwrt.org/viewtopic.php?id=60360), the WD-3 
 
 1. Download [this](http://www.gl-inet.com/firmware/mt300n/clean/openwrt-gl-mt300n-clean-1.0.bin) OpenWrt firmware.
 2. Place it in the root of a clean TFTP server running on your computer.
-* Foor
+..1.  Foor
 * Bar
 3. Rename the image to kernel — be sure there is no file extension, and that there are no other files on the TFTP server.
 4. Plug the WD-03 into your computer via ethernet.
