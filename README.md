@@ -4,5 +4,7 @@ This is the repo for the monitor component of the Convective Core Wifi Location 
 
 ## Setup
 
-This section describes the setup of monitor.  Monitors leverage the [OpenWrt](https://openwrt.org/) Linux distribution for embedded devices.
+This section describes the setup of monitor.  Monitors leverage the [OpenWrt](https://openwrt.org/) Linux distribution for embedded devices. First, a device capable of wifi monitoring is flashed with the OpenWrt operating system, then it is configured to be a client of a well known access point, finally the appropriate Convective Core Wifi Location Sensing monitor files are copied and configured on the monitor and it is restarted beginning the monitor process. Each of the these steps is described in detail below. 
+
+## Flashing 
 
