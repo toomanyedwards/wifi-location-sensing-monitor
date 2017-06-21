@@ -60,4 +60,11 @@ Convective Core Wifi Location Sensing Monitors require that *tcpdump* be install
 4. Verify the installation by running: *tcpdump -i wlan0-1"*
 5. tcpsump should start and you should see the network traffic captured by the monitor interface
 
+## Installing curl
+
+Convective Core Wifi Location Sensing Monitors require that *curl* be installed on the monitor machine. The following describes the installation steps.
+
+1. Telnet into 192.168.1.1
+2. Run: opkg update
+3. Run: opkg install curl
 
