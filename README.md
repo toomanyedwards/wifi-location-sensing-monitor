@@ -30,16 +30,18 @@ As described [here](https://forum.openwrt.org/viewtopic.php?id=60360), the WD-03
 The following steps describe configuring the monitor a wifi access point client. This is required so that signal strength information can be forwarded to the Convective Core Wifi Location Sensing server.
 
 1. Login to OpenWrt on 192.168.1.1 (root/no password)
-2. Choose Network>Wifi>Scan
-3. Click “Join Network” for “CCNet_AP”
+2. Choose System>Administration
+3. Set a password for root user
+4. Choose Network>Wifi>Scan
+5. Click “Join Network” for “CCNet_AP”
 * *Note: CCNet_AP is a well known access point for all Convective Core Wifi Location Sensing Monitors*
-4. Browse to Join Network>Settings
-5. Set WPA passphrase: 5124238782
-6. Set firewall zone to lan
-7. Click “Submit”
-8. Click “Save and Apply”
-9. Wireless should now be connected and show signal strength
-10. To verify setup. Telnet into 192.168.1.1 and ping a well known domain (e.g. - cnn.com)
+6. Browse to Join Network>Settings
+7. Set WPA passphrase: 5124238782
+8. Set firewall zone to lan
+9. Click “Submit”
+10. Click “Save and Apply”
+11. Wireless should now be connected and show signal strength
+12. To verify setup. Telnet into 192.168.1.1 and ping a well known domain (e.g. - cnn.com)
 
 ## Configuring the Monitor Interface
 
@@ -54,7 +56,7 @@ The following section describes how to configure the wifi monitor interface that
 
 Convective Core Wifi Location Sensing Monitors require that *tcpdump* be installed on the monitor machine. The following describes the installation steps.
 
-1. Telnet into 192.168.1.1
+1. SSH into 192.168.1.1
 2. Run: opkg update
 3. Run: opkg install tcpdump
 4. Verify the installation by running: *tcpdump -i wlan0-1"*
@@ -64,7 +66,17 @@ Convective Core Wifi Location Sensing Monitors require that *tcpdump* be install
 
 Convective Core Wifi Location Sensing Monitors require that *curl* be installed on the monitor machine. The following describes the installation steps.
 
-1. Telnet into 192.168.1.1
+1. SSH into 192.168.1.1
 2. Run: opkg update
 3. Run: opkg install curl
+
+## Installing the Startup Scripts
+
+Convective Core Wifi Location Sensing Monitors include several scripts that run automatically when the monitor is started. These scripts monitor wifi tcp traffic and forward the appropriate data in json format to the server. This section describes how to install the scripts.
+
+1. SSH into 192.168.1.1
+2. Copy the files from the scripts/etc folder from the github repo https://github.com/toomanyedwards/wifi-location-sensing-monitor to the /etc folder on the monitor
+3. Use chmod +x on each copied script to ensure that it is executable
+4. Restart the monitor device
+5. You should start seeing traffic on the Convective Core Wifi Location Sensing Server's debug page for devices on the same channel as the monitor
 
