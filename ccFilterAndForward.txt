@@ -1,0 +1,46 @@
+# This script filters each line of output from tcpdump and sends a json payoad to the server for each matching packet.
+# The json payload includes the monitor id, the MAC address of the client and signal strength of client in dB
+
+
+# TODO: There are limitations since OpenWrt uses the ASH shell, but this can surely be optimized.
+# TODO: Refine which packets are optimal to filter for
+
+# NOTE: $1 in this script is a line of output from tcpdump representing a tcp protocol packet
+
+# Filter for the packets we want to forward to the server
+
+case $1 in
+  # If the output line from tcdump contains "dB" assume the packet contains signal strength info
+  *dB*)
+
+     # Further refine the packets we want to filter for
+     case $1 in
+      *RA:*)
+
+        case $1 in
+          *11g*)
+
+            case $1 in
+              *Clear*)
+
+              # Extract MAC address of sender
+              macAddress=$( echo "$1" | sed -E 's/.*RA:(.*) \(oui.*/\1/')
+
+
+              # Extract signalStrengthInDb
+              signalStrengthIndB=$( echo "$1" | sed -E 's/.*11g (.*)dB.*/\1/')
+
+
+              # Create json payload
+              jsonPayload='{ "event": { "name": "signalStrengthPacketReceived", "monitorId": "'"$monitorId"'", "macAddress": "'"$macAddress"'", "signalStrengthIndB": "'"$signalStrengthIndB"'" } }'
+
+              # Post the json to the server
+              curl -H "Content-Type: application/json" -X POST -d "$jsonPayload" $wifiLocationSensingServerUrl
+              ;;
+            esac
+            ;;
+        esac
+        ;;
+    esac
+    ;;
+esac

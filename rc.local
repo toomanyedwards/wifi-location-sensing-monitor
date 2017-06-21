@@ -1,0 +1,17 @@
+
+# A unique identifier for the monitor
+export set monitorId="CCNET_Monitor_2"
+
+# The URL of the Convective Core Wifi Location Sensing Server
+export set wifiLocationSensingServerUrl=http://54.84.39.245:8080
+
+# Use tcpdump to monitor wifi traffic
+# Send each line of output to CC filter and forward script
+# Loop in case tcpdump process gets unexpectedly killed
+
+while true
+do
+
+tcpdump -ttt -i wlan0-1 -e -s 256| tr '\n' '\0' | xargs -0 -n 1  sh /etc/ccFilterAndForward
+
+done
